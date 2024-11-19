@@ -5,7 +5,7 @@ from tkinter import messagebox
 precios = []
 
 # Función para mostrar la ventana de Arreglos
-def show_arreglos_menu():
+def show_arreglos_menu(menu_ventana):
     arreglos_menu = tk.Toplevel()
     arreglos_menu.title("Gestión de Precios - Arreglos")
     arreglos_menu.geometry("400x300")
@@ -46,6 +46,11 @@ def show_arreglos_menu():
         precio_final = sum(precios)
         messagebox.showinfo("Precio Final", f"El precio total es de: ${precio_final:.2f}")
 
+    # Función para regresar al menú principal
+    def regresar_menu():
+        arreglos_menu.destroy()  # Cierra la ventana de arreglos
+        menu_ventana.deiconify()  # Reabre la ventana de menú principal
+
     # Etiquetas y entradas para agregar y eliminar precios
     tk.Label(arreglos_menu, text="Agregar Precio").pack(pady=5)
     entry_precio = tk.Entry(arreglos_menu)
@@ -59,5 +64,10 @@ def show_arreglos_menu():
 
     tk.Button(arreglos_menu, text="Mostrar Precios", command=mostrar_precios).pack(pady=10)
     tk.Button(arreglos_menu, text="Sumar Precios", command=sumar_precios).pack(pady=10)
+    
+    # Botón para regresar al menú principal
+    tk.Button(arreglos_menu, text="Regresar al Menú", command=regresar_menu).pack(pady=10)
 
+    # Ocultar la ventana de menú principal mientras se muestra la ventana de arreglos
 
+    arreglos_menu.mainloop()
