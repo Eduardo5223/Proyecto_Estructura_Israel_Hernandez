@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
 from Ventanas import arreglos  # Importa el archivo arreglos.py para acceder a show_arreglos_menu
+from Ventanas import pilas
+from Ventanas import colas
+from Ventanas import quicksort
 
 def mostrar(root=None):
     # Crear una nueva ventana
@@ -16,17 +19,29 @@ def mostrar(root=None):
     label = tk.Label(menu_ventana, text="Menú", font=("Times New Roman", 16))
     label.grid(row=0, column=0, columnspan=2, pady=100, sticky="n")
 
-    # Función para cerrar el menú y abrir arreglos
+    # Función para cerrar el menú y abrir estructura
     def abrir_arreglos():
         menu_ventana.withdraw()  # Cierra temporalmente el menú principal
         arreglos.show_arreglos_menu(menu_ventana)  # Abre la ventana de arreglos y pasa el menú
 
+    def abrir_pilas():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        pilas.show_pilas_menu(menu_ventana)  # Abre la ventana de pilas y pasa el menú
+
+    def abrir_colas():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        colas.show_colas_menu(menu_ventana)  # Abre la ventana de pilas y pasa el menú
+    
+    def abrir_quicksort():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        quicksort.show_quicksort_menu(menu_ventana)  # Abre la ventana de pilas y pasa el menú
+
     # Lista de temas con sus funciones respectivas
     temas = [
-        ("Arreglos", abrir_arreglos),  # Llama a abrir_arreglos en lugar de arreglos.show_arreglos_menu directamente
-        ("Pilas", lambda: mostrar_mensaje("Pilas")),
-        ("Colas", lambda: mostrar_mensaje("Colas")),
-        ("QuickSort", lambda: mostrar_mensaje("QuickSort")),
+        ("Arreglos", abrir_arreglos), 
+        ("Pilas", abrir_pilas),
+        ("Colas", abrir_colas),
+        ("QuickSort", abrir_quicksort),
         ("Búsqueda Binaria", lambda: mostrar_mensaje("Búsqueda Binaria")),
         ("Listas Doblemente Ligadas", lambda: mostrar_mensaje("Listas Doblemente Ligadas")),
         ("Árboles", lambda: mostrar_mensaje("Árboles")),
