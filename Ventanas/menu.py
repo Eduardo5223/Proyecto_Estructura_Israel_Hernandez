@@ -4,6 +4,9 @@ from Ventanas import arreglos  # Importa el archivo arreglos.py para acceder a s
 from Ventanas import pilas
 from Ventanas import colas
 from Ventanas import quicksort
+from Ventanas import busqueda
+from Ventanas import lista
+from Ventanas import arbol
 
 def mostrar(root=None):
     # Crear una nueva ventana
@@ -30,11 +33,23 @@ def mostrar(root=None):
 
     def abrir_colas():
         menu_ventana.withdraw()  # Cierra temporalmente el menú principal
-        colas.show_colas_menu(menu_ventana)  # Abre la ventana de pilas y pasa el menú
+        colas.show_colas_menu(menu_ventana)  # Abre la ventana de colas y pasa el menú
     
     def abrir_quicksort():
         menu_ventana.withdraw()  # Cierra temporalmente el menú principal
-        quicksort.show_quicksort_menu(menu_ventana)  # Abre la ventana de pilas y pasa el menú
+        quicksort.show_quicksort_menu(menu_ventana)  # Abre la ventana de quicksort y pasa el menú
+
+    def abrir_busqueda():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        busqueda.show_busqueda_binaria_menu(menu_ventana)  # Abre la ventana de busqueda y pasa el menú
+
+    def abrir_lista():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        lista.show_lista_doble_menu(menu_ventana)  # Abre la ventana de lista doblemente ligada y pasa el menú
+    
+    def abrir_arbol():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        arbol.show_arbol_menu(menu_ventana)  # Abre la ventana de lista doblemente ligada y pasa el menú
 
     # Lista de temas con sus funciones respectivas
     temas = [
@@ -42,9 +57,9 @@ def mostrar(root=None):
         ("Pilas", abrir_pilas),
         ("Colas", abrir_colas),
         ("QuickSort", abrir_quicksort),
-        ("Búsqueda Binaria", lambda: mostrar_mensaje("Búsqueda Binaria")),
-        ("Listas Doblemente Ligadas", lambda: mostrar_mensaje("Listas Doblemente Ligadas")),
-        ("Árboles", lambda: mostrar_mensaje("Árboles")),
+        ("Búsqueda Binaria", abrir_busqueda),
+        ("Listas Doblemente Ligadas", abrir_lista),
+        ("Árboles", abrir_arbol),
         ("Grafos", lambda: mostrar_mensaje("Grafos"))
     ]
 
