@@ -7,6 +7,7 @@ from Ventanas import quicksort
 from Ventanas import busqueda
 from Ventanas import lista
 from Ventanas import arbol
+from Ventanas import grafo
 
 def mostrar(root=None):
     # Crear una nueva ventana
@@ -49,7 +50,11 @@ def mostrar(root=None):
     
     def abrir_arbol():
         menu_ventana.withdraw()  # Cierra temporalmente el menú principal
-        arbol.show_arbol_menu(menu_ventana)  # Abre la ventana de lista doblemente ligada y pasa el menú
+        arbol.show_arbol_menu(menu_ventana)  # Abre la ventana de arbol y pasa el menú
+    
+    def abrir_grafo():
+        menu_ventana.withdraw()  # Cierra temporalmente el menú principal
+        grafo.show_grafo_menu(menu_ventana)  # Abre la ventana de arbol y pasa el menú
 
     # Lista de temas con sus funciones respectivas
     temas = [
@@ -60,12 +65,8 @@ def mostrar(root=None):
         ("Búsqueda Binaria", abrir_busqueda),
         ("Listas Doblemente Ligadas", abrir_lista),
         ("Árboles", abrir_arbol),
-        ("Grafos", lambda: mostrar_mensaje("Grafos"))
+        ("Grafos", abrir_grafo)
     ]
-
-    # Función para mostrar un mensaje de ejemplo por cada tema (excepto Arreglos)
-    def mostrar_mensaje(tema):
-        messagebox.showinfo("Información", f"Has seleccionado el tema: {tema}")
 
     # Crear un botón para cada tema en dos columnas
     for i, (tema, func) in enumerate(temas):
